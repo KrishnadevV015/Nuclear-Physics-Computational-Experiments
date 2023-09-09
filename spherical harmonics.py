@@ -1,12 +1,12 @@
-import numpy as np
-import matplotlib.pyplot as plt
+from numpy import arange,pi,meshgrid,sqrt,abs,sin,cos
+from matplotlib.pyplot import plot,title,show,savefig,figure,figaspect
 from scipy.special import sph_harm
 import sys
 
-theta=np.arange(0,np.pi,0.001)
-phi=np.arange(0,2*np.pi,0.001)
+theta=arange(0,pi,0.001)
+phi=arange(0,2*pi,0.001)
 
-(theta,phi)=np.meshgrid(theta,phi)
+(theta,phi)=meshgrid(theta,phi)
 
 
 def to_plot(l,m):
@@ -15,19 +15,19 @@ def to_plot(l,m):
 
     
     if m<0:
-        r=np.sqrt(2) * (-1) **m* ylm.imag 
+        r=sqrt(2) * (-1) **m* ylm.imag 
     if m>0:
-        r=np.sqrt(2) * (1) **m *ylm.real 
+        r=sqrt(2) * (1) **m *ylm.real 
 
     if m==0:
         r=ylm
         
     #transforming to cartetian coordinates
-    x=np.abs(r)*np.sin(phi)*np.sin(theta)
-    y=np.abs(r)*np.cos(phi)*np.sin(theta)
-    z=np.abs(r)*np.cos(theta)
+    x=abs(r)*sin(phi)*sin(theta)
+    y=abs(r)*cos(phi)*sin(theta)
+    z=abs(r)*cos(theta)
     
-    fig = plt.figure(figsize=plt.figaspect(1.))
+    fig = figure(figsize=figaspect(1.))
     ax = fig.add_subplot( projection='3d')
     ax.set_title('Spherical Harmonics for l={},m={}'.format(l, m))
     ax_lim = 0.5
@@ -36,8 +36,8 @@ def to_plot(l,m):
     ax.set_zlim(-ax_lim, ax_lim)
 
     ax.plot_surface(x,y,z,cmap='viridis')
-    plt.savefig('axissphharm l={},m={}.png'.format(l,m))
-    plt.show()
+    savefig('axissphharm l={},m={}.png'.format(l,m))
+    show()
 
 l_values=[0,1,2,3] #list containing l values
 
