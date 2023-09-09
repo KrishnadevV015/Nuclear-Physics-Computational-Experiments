@@ -78,9 +78,9 @@ for N in N_values: #to genrate Harmonic energy term
                 hlines(y=Eso,xmin=3.1,xmax=5.3 ,color=colors[l] )
                 text(label_coordinates[l],Eso, '{}{}{}/2'.format(n(N,l),sym,j(l,s)))
                 
-        
-title('Shell Model')
-ylabel('Energy levels')
+       
+title('Shell Model',size=18)
+ylabel('Energy levels',size=12)
 xticks([])
 yticks([])
 savefig('Shellmodel.png',dpi=300)
