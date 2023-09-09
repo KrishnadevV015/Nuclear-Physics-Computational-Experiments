@@ -1,6 +1,6 @@
 #Binding Energy curve
 from numpy import arange
-from matplotlib.pyplot import plot,xlabel,ylabel,legend,title,grid,show
+from matplotlib.pyplot import plot,xlabel,ylabel,legend,title,grid,show,figure,savefig
 import sys
 
 
@@ -52,6 +52,7 @@ for A in A_values: #to find Each energy contribution per nucleon
     Esym.append(esym)
     Epar.append(epar)
 #to plot respective energy contributions against A
+figure(figsize=(12,8))
 plot(A_values,EVol)
 plot(A_values,ESur)
 plot(A_values,ECol)
@@ -59,9 +60,10 @@ plot(A_values,Esym)
 plot(A_values,Epar)
 plot(A_values,be)
 
-legend(['$E_{Volume}$','$E_{Surface}$','$E_{Coulomb}$','$E_{Asymettry}$','$E_{Pairing}$','Binding energy per nucleon'])
+legend(['$E_{Volume}$','$E_{Surface}$','$E_{Coulomb}$','$E_{Asymmetry}$','$E_{Pairing}$','Binding energy per nucleon'])
 grid()
-xlabel('A (Mass number)')
-ylabel('Binding energy per nucleon (in MeV)')
-title('Binding Energy Curve-Liquid Drop Model')
+xlabel('A (Mass number)',size=12)
+ylabel('Binding energy per nucleon (in MeV)',size=12)
+title('Binding Energy Curve-Liquid Drop Model',size=18)
+savefig('Binding energy curve.png')
 show()
